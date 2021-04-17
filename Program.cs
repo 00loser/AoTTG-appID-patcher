@@ -32,7 +32,7 @@ class Program
         Console.WriteLine("Process found!");
         memoryEditor.OpenProcess(aottg.Id); //attach our memory editor to the process using its PID
 
-        Task<IEnumerable<long>> scan = memoryEditor.AoBScan(appID_bytes, true, false); //scans for an array of bytes in memory. we want to get old appID address and modify it so we gotta scan for appID bytes
+        Task<IEnumerable<long>> scan = memoryEditor.AoBScan(appID_bytes, true, false); //scans for an array of bytes in memory. we want to get old appID address and modify its value so we gotta scan for appID bytes
         scan.Wait(); //wait for task to finish
         foreach (long address in scan.Result) //now lets try to write the new appID in the addresses we got
         {
