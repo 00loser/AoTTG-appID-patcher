@@ -34,7 +34,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Memory">
-      <HintPath>\References\Memory.dll</HintPath>
+      <HintPath>.\References\Memory.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
