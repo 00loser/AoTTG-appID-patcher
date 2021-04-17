@@ -1,5 +1,5 @@
 # AoTTG-appID-patcher
-Simple scripts that allow you to modify the appID of an AoTTG mod without touching it's code
+Simple scripts that allows you to modify the appID of an AoTTG mod without touching it's code
 
 # Requirements
 
