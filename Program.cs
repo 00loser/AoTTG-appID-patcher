@@ -11,9 +11,9 @@ using System.IO;
 class Program
 {
     static Mem memoryEditor = new Mem();
-    static readonly string appID_bytes = "66 00 31 00 66 00 36 00 31 00 39 00 35 00 63 00 2D 00 64 00 66 00 34 00 61 00 2D 00 34 00 30 00 66 00 39 00 2D 00 62 00 61 00 65 00 35 00 2D 00 34 00 37 00 34 00 34 00 63 00 33 00 32 00 39 00 30 00 31 00 65 00 66 00"; //old app ID bytes in hex 
-    static readonly string newAppID = "5578b046-8264-438c-99c5-fb15c71b6744";
-    static readonly string oldAppID = "f1f6195c-df4a-40f9-bae5-4744c32901ef";
+    const string appID_bytes = "66 00 31 00 66 00 36 00 31 00 39 00 35 00 63 00 2D 00 64 00 66 00 34 00 61 00 2D 00 34 00 30 00 66 00 39 00 2D 00 62 00 61 00 65 00 35 00 2D 00 34 00 37 00 34 00 34 00 63 00 33 00 32 00 39 00 30 00 31 00 65 00 66 00"; //old app ID bytes in hex 
+    const string newAppID = "5578b046-8264-438c-99c5-fb15c71b6744";
+    const string oldAppID = "f1f6195c-df4a-40f9-bae5-4744c32901ef";
 
     //this program needs to be runned as admin so that Memory.dll can read/write our process memory
     static void Main(string[] args) => EditMemory(); //pls do it this way so i wont feel like i wasted my time understanding how to hack program's memory
@@ -50,7 +50,7 @@ class Program
 
     static void WriteFromFile(string path)
     {
-        byte[] toreplace = Encoding.Unicode.GetBytes(oldAppID); //constant string vars in our binary file are encoded using unicode so we gotta get old appID unicode bytes
+        byte[] toreplace = Encoding.Unicode.GetBytes(oldAppID); //constant string fields in our binary file are encoded using unicode so we gotta get old appID unicode bytes
         byte[] replace = Encoding.Unicode.GetBytes(newAppID); //get unicode bytes of new appID
         File.WriteAllBytes(path, Utils.ReplaceBytes(File.ReadAllBytes(path), toreplace, replace)); //then write those bytes
     }
